@@ -1,0 +1,3 @@
+{% extends "base.html" %}{% block title %}{{title}}{% endblock %}{% block body %}
+<div class="page-h"><div class="wrap"><h1>{{title}}</h1><p>{{intro}}</p></div></div>
+<div class="prose">{% for h,t in secs %}<h2>{{h}}</h2><p>{{t}}</p>{% endfor %}{% if not secs %}<a class="btn" href="/">Go to home</a>{% endif %}</div>{% endblock %}

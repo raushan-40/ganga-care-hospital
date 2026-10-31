@@ -1,0 +1,12 @@
+services:
+  web:
+    build: .
+    image: hospital-opd:latest
+    container_name: hospital-web
+    ports: ["80:8000"]
+    environment:
+      ENABLE_CRASH: "1"   # demo only; remove in production
+    volumes: ["hospital-data:/data"]
+    restart: always        # auto-recovery after a crash
+volumes:
+  hospital-data:

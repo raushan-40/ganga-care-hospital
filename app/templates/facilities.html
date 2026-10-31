@@ -1,0 +1,5 @@
+{% extends "base.html" %}{% block title %}Facilities{% endblock %}{% block body %}
+<div class="page-h"><div class="wrap"><h1>Facilities</h1><p>Everything a patient needs, in one building.</p></div></div>
+<section><div class="wrap"><div class="items">
+{% for t,p in [("Emergency and trauma","24-hour casualty with a resuscitation bay and trauma team."),("Intensive care","12-bed ICU and 6-bed neonatal unit with continuous monitoring."),("Operation theatres","Four modular theatres for general and orthopedic surgery."),("Laboratory","Blood and urine tests with same-day reports."),("Radiology","Digital X-ray, ultrasound and ECG."),("Pharmacy","Open round the clock inside the hospital."),("In-patient rooms","General wards, semi-private and private rooms."),("Access and parking","Wheelchair ramps, lifts and free visitor parking.")] %}
+<div><h3>{{t}}</h3><p>{{p}}</p></div>{% endfor %}</div></div></section>{% endblock %}

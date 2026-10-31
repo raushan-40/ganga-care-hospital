@@ -1,0 +1,14 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>{% block title %}Ganga Care Hospital, Patna{% endblock %}</title><meta name="description" content="Book OPD appointments online at Ganga Care Hospital, Patna.">
+<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"></head><body>
+<div class="emerg">Emergency, open 24 hours: <b>0612-000-0000</b></div>
+<header><div class="wrap"><a class="brand" href="/"><i>G</i>Ganga Care</a>
+<nav aria-label="Main"><a href="/about">About</a><a href="/departments">Departments</a><a href="/doctors">Doctors</a><a href="/facilities">Facilities</a><a href="/packages">Packages</a><a href="/contact">Contact</a></nav>
+<a class="btn" href="/book">Book appointment</a></div></header>
+<main>{% block body %}{% endblock %}</main>
+<footer><div class="wrap"><div class="g">
+<div><h4>Ganga Care Hospital</h4><p>Boring Road, Patna, Bihar 800001<br>Reception 0612-000-0001<br>care@gangacare.example</p></div>
+<div><h4>Hospital</h4><a href="/about">About us</a><a href="/departments">Departments</a><a href="/doctors">Doctors</a><a href="/facilities">Facilities</a><a href="/careers">Careers</a></div>
+<div><h4>Patients</h4><a href="/book">Book appointment</a><a href="/manage">Check your booking</a><a href="/packages">Health packages</a><a href="/faq">FAQ</a><a href="/contact">Contact</a></div>
+<div><h4>Legal</h4><a href="/privacy">Privacy policy</a><a href="/terms">Terms of use</a><a href="/disclaimer">Medical disclaimer</a><a href="/cancellation">Cancellation policy</a></div></div>
+<div class="fine">&copy; 2026 Ganga Care Hospital. Fictional hospital created for a college cloud computing project.</div></div></footer></body></html>

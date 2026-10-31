@@ -1,0 +1,20 @@
+{% extends "base.html" %}{% block body %}
+<div class="hero"><div class="wrap"><div>
+<h1>Specialist care, booked in a minute.</h1>
+<p>Choose your doctor, pick a 20-minute slot and arrive to a short wait. Five departments, fixed OPD hours, and emergency care around the clock.</p>
+<div class="row"><a class="btn gold" href="/book">Book appointment</a><a class="btn ghost" href="/manage">Check your booking</a></div></div>
+<div class="reserve"><h3>Reserve a slot</h3><form action="/book" method="get">
+<label>Doctor<select name="doctor">{% for d in doctors %}<option value="{{d[0]}}">{{d[1]}}, {{d[2]}}</option>{% endfor %}</select></label>
+<label>Date<input type="date" name="date" required></label><button class="btn" type="submit">See available times</button></form><p class="already">Already booked? <a href="/manage">Check your booking here</a></p></div></div></div>
+<section><div class="wrap"><div class="head"><h2>Our OPD consultants</h2><a href="/doctors">All doctors</a></div><div class="docs">
+{% for d in doctors %}<div class="doc"><div class="mono">{{d[1].split()[1][0]}}{{d[1].split()[2][0]}}</div><h3>{{d[1]}}</h3><small>{{d[2]}}</small><p>{{d[3]}}</p><a href="/book?doctor={{d[0]}}">Book with this doctor</a></div>{% endfor %}</div></div></section>
+<section class="band"><div class="wrap"><div class="head"><h2>Care that runs on time</h2></div><div class="cols">
+<div><h3>Slot-based OPD</h3><p>Every visit has its own 20-minute slot, so the waiting room stays calm.</p></div>
+<div><h3>Emergency, always</h3><p>Trauma and cardiac teams are on duty 24 hours, every day of the year.</p></div>
+<div><h3>Diagnostics on site</h3><p>Lab, X-ray, ultrasound and ECG under the same roof, with same-day reports.</p></div></div></div></section>
+<section><div class="wrap"><div class="head"><h2>How booking works</h2></div><div class="steps">
+<div><h3>Choose</h3><p>Pick a doctor, a date within 14 days and a free slot.</p></div>
+<div><h3>Confirm</h3><p>Enter the patient's name and mobile number. You get a booking number.</p></div>
+<div><h3>Visit</h3><p>Show the number at the OPD counter. Need to change plans? Cancel from Manage booking.</p></div></div></div></section>
+<div class="cta"><div class="wrap"><h2>Your next appointment is a few taps away.</h2><p>OPD runs Monday to Saturday, 10:00 to 13:00.</p><a class="btn gold" href="/book">Book appointment</a></div></div>
+{% endblock %}

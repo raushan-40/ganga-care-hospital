@@ -1,0 +1,3 @@
+{% extends "base.html" %}{% block title %}Doctors{% endblock %}{% block body %}
+<div class="page-h"><div class="wrap"><h1>Our doctors</h1><p>Book directly with the consultant you want to see.</p></div></div>
+<section><div class="wrap"><div class="docs">{% for d in doctors %}<div class="doc"><div class="mono">{{d[1].split()[1][0]}}{{d[1].split()[2][0]}}</div><h3>{{d[1]}}</h3><small>{{d[2]}}</small><p>{{d[3]}}</p><a class="btn" href="/book?doctor={{d[0]}}">Book appointment</a></div>{% endfor %}</div></div></section>{% endblock %}

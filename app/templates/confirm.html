@@ -1,0 +1,4 @@
+{% extends "base.html" %}{% block title %}Appointment confirmed{% endblock %}{% block body %}
+<div class="page-h"><div class="wrap"><h1>Appointment confirmed</h1><p>Save your booking number. You need it at the OPD counter.</p></div></div>
+<div class="prose"><div class="ticket"><p>Booking number<br><b>{{a.ref}}</b></p><p>{{a.dname}}, {{a.dept}}<br>{{a.date}} at {{a.slot}}<br>Patient: {{a.patient}}</p></div>
+<p>Arrive 10 minutes early with a photo ID. To check or cancel this booking later, use <a href="/manage">Check your booking</a>.</p><a class="btn" href="/appointment/{{a.ref}}/receipt?print=1" target="_blank">Download receipt (PDF)</a> <a class="btn ghost" href="/appointment/{{a.ref}}/receipt?download=1">Save as file</a> <a class="btn ghost" href="/">Back to home</a></div>{% endblock %}

@@ -1,0 +1,6 @@
+{% extends "base.html" %}{% block title %}Manage booking{% endblock %}{% block body %}
+<div class="page-h"><div class="wrap"><h1>Manage your booking</h1><p>Look up an appointment with your booking number and mobile number.</p></div></div>
+<div class="prose">{% if msg %}<p class="{{'err' if not a and 'No booking' in msg else 'ok'}}" role="alert">{{msg}}</p>{% endif %}
+{% if a %}<div class="ticket"><p>Booking number<br><b>{{a.ref}}</b></p><p>{{a.dname}}, {{a.dept}}<br>{{a.date}} at {{a.slot}}<br>Patient: {{a.patient}}</p></div>
+<form method="post"><input type="hidden" name="ref" value="{{a.ref}}"><input type="hidden" name="phone" value="{{a.phone}}"><input type="hidden" name="action" value="cancel"><button class="btn ghost" type="submit">Cancel this booking</button></form>
+{% else %}<form method="post"><label>Booking number<input name="ref" placeholder="OPD-XXXXXX" required></label><label>Mobile number<input name="phone" inputmode="numeric" maxlength="10" required></label><button class="btn" type="submit">Find booking</button></form>{% endif %}</div>{% endblock %}

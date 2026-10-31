@@ -1,0 +1,20 @@
+{% extends "base.html" %}{% block title %}Book appointment{% endblock %}{% block body %}
+<div class="page-h"><div class="wrap"><h1>Book an OPD appointment</h1><p>Mon to Sat, 10:00 to 13:00. Dates open for the next 14 days.</p></div></div>
+<div class="prose"><p class="already top">Already booked? <a href="/manage">Check or cancel your booking here</a></p>{% if err %}<p class="err" role="alert">{{err}}</p>{% endif %}
+<form method="post">
+<label>Doctor<select name="doctor_id" id="doc" required>{% for d in docs %}<option value="{{d.id}}" {{'selected' if f.doctor_id|string==d.id|string}}>{{d.name}}, {{d.dept}}</option>{% endfor %}</select></label>
+<label>Date<input type="date" name="date" id="date" min="{{today}}" max="{{mx}}" value="{{f.date}}" required></label>
+<label>Time slot<select name="slot" id="slot" required>{% for s in slots %}<option {{'selected' if f.slot==s}}>{{s}}</option>{% endfor %}</select></label>
+<label>Patient name<input name="patient" value="{{f.patient}}" required></label>
+<label>Mobile number<input name="phone" value="{{f.phone}}" inputmode="numeric" maxlength="10" required></label>
+<label>Reason for visit (optional)<textarea name="reason" rows="3">{{f.reason}}</textarea></label>
+<button class="btn" type="submit">Confirm appointment</button>
+<p style="font-size:.85rem">By booking you agree to our <a href="/terms">terms</a> and <a href="/privacy">privacy policy</a>.</p></form></div>
+<script>
+const all=[...document.querySelectorAll('#slot option')].map(o=>o.value);
+async function load(){const d=doc.value,t=date.value;if(!t)return;
+ const free=await (await fetch(`/slots?doctor=${d}&date=${t}`)).json(),cur=slot.value;
+ slot.innerHTML=all.map(s=>`<option value="${s}" ${free.includes(s)?'':'disabled'}>${s}${free.includes(s)?'':' (booked)'}</option>`).join('');
+ slot.value=free.includes(cur)?cur:(free[0]||'')}
+doc.onchange=date.onchange=load;load();
+</script>{% endblock %}

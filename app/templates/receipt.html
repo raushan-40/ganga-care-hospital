@@ -1,0 +1,30 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Receipt {{a.ref}}</title>
+<style>
+body{margin:0;background:#eef2f2;font:16px/1.6 "Segoe UI",system-ui,sans-serif;color:#14282b}
+.sheet{max-width:640px;margin:32px auto;background:#fff;padding:40px 44px;border-top:6px solid #0c2f33;box-shadow:0 10px 40px #0002}
+h1{font:500 1.7rem "Palatino Linotype",Palatino,Georgia,serif;margin:0}.sub{color:#53686b;font-size:.9rem;margin:2px 0 24px}
+.ref{border:1px solid #b08d57;border-left:5px solid #b08d57;padding:14px 18px;margin-bottom:22px}
+.ref b{font:500 1.9rem "Palatino Linotype",Georgia,serif;letter-spacing:.05em;display:block}
+table{width:100%;border-collapse:collapse}td{padding:9px 0;border-bottom:1px solid #dbe4e5;vertical-align:top}td:first-child{color:#53686b;width:38%}
+ul{padding-left:20px;color:#53686b;font-size:.92rem}.fine{font-size:.8rem;color:#53686b;margin-top:26px}
+.bar{max-width:640px;margin:20px auto 0;display:flex;gap:10px;padding:0 8px}
+.bar button,.bar a{background:#0c2f33;color:#fff;border:0;padding:.7em 1.3em;font:600 .95rem "Segoe UI",sans-serif;text-decoration:none;cursor:pointer}
+.bar a{background:transparent;color:#0c2f33;border:1px solid #0c2f33}
+@media print{body{background:#fff}.sheet{margin:0;box-shadow:none;max-width:none}.bar{display:none}}
+</style></head><body>
+<div class="bar"><button onclick="window.print()">Print or save as PDF</button><a href="/appointment/{{a.ref}}">Back</a></div>
+<div class="sheet"><h1>Ganga Care Hospital</h1><p class="sub">Boring Road, Patna, Bihar 800001 &middot; Reception 0612-000-0001</p>
+<div class="ref">OPD appointment receipt<b>{{a.ref}}</b></div>
+<table>
+<tr><td>Patient</td><td>{{a.patient}}</td></tr>
+<tr><td>Mobile</td><td>{{phone}}</td></tr>
+<tr><td>Doctor</td><td>{{a.dname}}</td></tr>
+<tr><td>Department</td><td>{{a.dept}}</td></tr>
+<tr><td>Date</td><td>{{a.date}}</td></tr>
+<tr><td>Time slot</td><td>{{a.slot}}</td></tr>
+<tr><td>Status</td><td>Confirmed</td></tr></table>
+<ul><li>Show this booking number at the OPD counter.</li><li>Arrive 10 minutes early and bring a photo ID.</li><li>Consultation fee is paid at the counter.</li><li>To cancel, visit Manage booking on the website.</li></ul>
+<p class="fine">Generated on {{now}}. Ganga Care Hospital is a fictional hospital created for a college project.</p></div>
+{% if auto_print %}<script>window.onload=()=>window.print()</script>{% endif %}
+</body></html>
